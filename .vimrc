@@ -13,6 +13,8 @@ Plugin 'tpope/vim-speeddating'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 
+Plugin 'dart-lang/dart-vim-plugin'
+
 call vundle#end()
 
 syntax enable "Enable syntax highlighting
