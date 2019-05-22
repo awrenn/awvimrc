@@ -12,8 +12,13 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-speeddating'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-fireplace'
+Plugin 'tpope/vim-classpath'
 
 Plugin 'dart-lang/dart-vim-plugin'
+
+Plugin 'venantius/vim-cljfmt'
+Plugin 'vim-scripts/paredit.vim'
 
 call vundle#end()
 
@@ -37,6 +42,9 @@ let g:lightline = {
   \ }
 
 map <C-o> :NERDTreeToggle<CR>
+
+map <C-c> :Cljfmt
+
 set background=dark
 set tabstop=4
 set shiftwidth=4
