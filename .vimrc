@@ -12,24 +12,28 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-speeddating'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-fireplace'
-Plugin 'tpope/vim-classpath'
 
 Plugin 'dart-lang/dart-vim-plugin'
 
-Plugin 'venantius/vim-cljfmt'
-Plugin 'vim-scripts/paredit.vim'
-"Plugin 'franks42/lein-repls'
-"Plugin 'tslime.vim'
+"Plugin 'venantius/vim-cljfmt'
+"Plugin 'vim-scripts/paredit.vim' " This plugin is terrible for all vim users; I don't know why it exists
+Plugin 'franks42/lein-repls'
+Plugin 'tslime.vim'
+Plugin 'tpope/vim-fireplace'
+Plugin 'tpope/vim-classpath'
 
 call vundle#end()
 
 syntax enable "Enable syntax highlighting
-set foldlevelstart=99
 if v:version > 703
         set number
 endif
+
 set relativenumber
+
+set textwidth=0
+set wrapmargin=0
+
 set nuw=4
 set hlsearch
 set laststatus=2 " always show status line
