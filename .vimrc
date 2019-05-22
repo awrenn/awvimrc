@@ -19,6 +19,8 @@ Plugin 'dart-lang/dart-vim-plugin'
 
 Plugin 'venantius/vim-cljfmt'
 Plugin 'vim-scripts/paredit.vim'
+"Plugin 'franks42/lein-repls'
+"Plugin 'tslime.vim'
 
 call vundle#end()
 
