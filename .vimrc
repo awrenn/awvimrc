@@ -1,10 +1,10 @@
-filetype off
+filetype plugin indent on
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-" Vundle Config
 Plugin 'VundleVim/Vundle.vim'
+
 Plugin 'scrooloose/nerdtree'
 Plugin 'Valloric/YouCompleteMe'
 
@@ -19,8 +19,6 @@ Plugin 'tpope/vim-speeddating'
 Plugin 'tpope/vim-surround'
 " Better . support
 Plugin 'tpope/vim-repeat'
-
-Plugin 'jceb/vim-orgmode'
 
 Plugin 'dart-lang/dart-vim-plugin'
 
@@ -40,17 +38,8 @@ set nuw=4
 set hlsearch
 set laststatus=2 " always show status line
 
-filetype plugin indent on
-
-let g:lightline = {
-  \     'active': {
-  \         'left': [['mode', 'paste' ], ['readonly', 'filename', 'modified']],
-  \         'right': [['lineinfo'], ['percent'], ['fileformat', 'fileencoding']]
-  \     }
-  \ }
-
-
 let g:airline_theme = "papercolor"
+let g:airline#extensions#tabline#enabled = 1
 
 map <C-o> :NERDTreeToggle<CR>
 
