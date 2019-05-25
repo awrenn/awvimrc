@@ -1,21 +1,21 @@
 #!/bin/bash
 
 function vimrc {
-    cp vimrc ~/.vimrc
-    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    cp vimrc $HOME/.vimrc
+    git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
     vim -c :PluginInstall -c :q -c :q
-    python2 $(find ~/.vim/plugins -name install.py | grep YouCompleteMe)
+    python2 $(find $HOME/.vim -name install.py | grep YouCompleteMe)
 }
 
 function byobu {
-    cp tmux.conf ~/.byobu/.tmux.conf
-    cp color.tmux ~/.byobu/color.tmux
+    cp tmux.conf $HOME/.byobu/.tmux.conf
+    cp color.tmux $HOME/.byobu/color.tmux
 }
 
 function zsh {
     wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O /tmp/oh_my_zsh.sh
     sh "/tmp/oh_my_zsh.sh"
-    cp zshrc ~/.zshrc
+    cp zshrc $HOME/.zshrc
 }
 
 function gnome {
@@ -42,6 +42,7 @@ case $1 in
         vimrc
         byobu
         zsh
+        gnome
     ;;
 esac
 
