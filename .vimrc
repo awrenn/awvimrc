@@ -5,22 +5,24 @@ call vundle#begin()
 
 " Vundle Config
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'vim-airline/vim-airline'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Valloric/YouCompleteMe'
 
+" Buttom bar
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
+" Change dates with <C-A> and <C-X>
 Plugin 'tpope/vim-speeddating'
+" Adding support for surround <s> as a phrase type
+" ex: cs'" replace outside ' with "
 Plugin 'tpope/vim-surround'
+" Better . support
 Plugin 'tpope/vim-repeat'
 
-Plugin 'dart-lang/dart-vim-plugin'
+Plugin 'jceb/vim-orgmode'
 
-"Plugin 'venantius/vim-cljfmt'
-"Plugin 'vim-scripts/paredit.vim' " This plugin is terrible for all vim users; I don't know why it exists
-Plugin 'franks42/lein-repls'
-Plugin 'tslime.vim'
-Plugin 'tpope/vim-fireplace'
-Plugin 'tpope/vim-classpath'
+Plugin 'dart-lang/dart-vim-plugin'
 
 call vundle#end()
 
@@ -47,9 +49,10 @@ let g:lightline = {
   \     }
   \ }
 
-map <C-o> :NERDTreeToggle<CR>
 
-map <C-c> :Cljfmt
+let g:airline_theme = "papercolor"
+
+map <C-o> :NERDTreeToggle<CR>
 
 set background=dark
 set tabstop=4
