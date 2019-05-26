@@ -22,6 +22,8 @@ Plugin 'tpope/vim-repeat'
 
 Plugin 'dart-lang/dart-vim-plugin'
 
+Plugin 'fatih/vim-go'
+
 call vundle#end()
 
 syntax enable "Enable syntax highlighting
