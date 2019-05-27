@@ -24,6 +24,8 @@ Plugin 'dart-lang/dart-vim-plugin'
 
 Plugin 'fatih/vim-go'
 
+Plugin 'rust-lang/rust.vim'
+
 call vundle#end()
 
 syntax enable "Enable syntax highlighting
@@ -45,7 +47,23 @@ let g:airline#extensions#tabline#enabled = 1
 
 map <C-o> :NERDTreeToggle<CR>
 
+let fts = ['go']
+if index(fts, &filetype) > -1
+    map <C-c> :GoFmt<CR>
+    map <C-t> :GoTest<CR>
+endif
+
+let fts = ['rs']
+if index(fts, &filetype) > -1
+    map <C-c> :GoFmt<CR>
+    map <C-t> :GoTest<CR>
+endif
+
 set background=dark
 set tabstop=4
 set shiftwidth=4
 set expandtab
+
+if has('macunix')
+    set backspace=indent,eol,start
+endif
