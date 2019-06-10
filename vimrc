@@ -22,9 +22,9 @@ Plugin 'tpope/vim-repeat'
 
 Plugin 'dart-lang/dart-vim-plugin'
 
-Plugin 'fatih/vim-go'
-
 Plugin 'rust-lang/rust.vim'
+
+Plugin 'dracula/vim'
 
 call vundle#end()
 
@@ -55,8 +55,8 @@ endif
 
 let fts = ['rs']
 if index(fts, &filetype) > -1
-    map <C-c> :GoFmt<CR>
-    map <C-t> :GoTest<CR>
+    map <C-c> :RustFmt<CR>
+    map <C-t> :RustTest<CR>
 endif
 
 set background=dark
@@ -67,3 +67,7 @@ set expandtab
 if has('macunix')
     set backspace=indent,eol,start
 endif
+
+syntax on
+color dracula
+g:dracula_italic = 0
