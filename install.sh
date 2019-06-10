@@ -25,6 +25,11 @@ function gnome {
     gsettings set "org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$profile/" foreground-color '#ffffcc'
 }
 
+function tmux {
+    cp tmux.conf ~/.tmuf.config
+    tmux source-file ~/.tmux.config
+}
+
 case $1 in
     vimrc*)
         vimrc
@@ -37,6 +42,9 @@ case $1 in
     ;;
     gnome*)
         gnome
+    ;;
+    tmux*)
+        tmux
     ;;
     all*)
         vimrc
