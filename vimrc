@@ -30,9 +30,15 @@ Plugin 'morhetz/gruvbox'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'peitalin/vim-jsx-typescript'
 
+Plugin 'google/vim-maktaba'
+Plugin 'google/vim-codefmt'
+Plugin 'google/vim-glaive'
+
 call vundle#end()
+call glaive#Install()
 
 syntax enable "Enable syntax highlighting
+syntax on
 if v:version > 703
         set number
 endif
@@ -51,22 +57,28 @@ let g:airline#extensions#tabline#enabled = 1
 
 map <C-o> :NERDTreeToggle<CR>
 
+nnoremap wq :wq<CR>
+
 " Window op helpers
 nnoremap <C-a> <C-w><
 nnoremap <C-d> <C-w>>
 nnoremap <C-j> <C-w>v
 
-let fts = ['go']
-if index(fts, &filetype) > -1
+let jss = ["typescript.tsx"]
+"au BufRead,BufNewFile *.tsx set filetype=js
+if ('go' == &filetype)
     map <C-c> :GoFmt<CR>
     map <C-t> :GoTest<CR>
-endif
-
-let fts = ['rs']
-if index(fts, &filetype) > -1
+elseif ('rs' == &filetype)
     map <C-c> :RustFmt<CR>
     map <C-t> :RustTest<CR>
+elseif index(jss, &filetype) > -1
+    map <C-c> :FormatCode clang-format<CR>
+else
+    map <C-c> :FormatCode<CR>
 endif
+
+" Other code formatting things
 
 set background=dark
 set t_Co=256
@@ -85,6 +97,5 @@ if has('macunix')
     set backspace=indent,eol,start
 endif
 
-syntax on
 
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
