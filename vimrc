@@ -26,6 +26,9 @@ Plugin 'rust-lang/rust.vim'
 
 Plugin 'dracula/vim'
 
+Plugin 'leafgarland/typescript-vim'
+Plugin 'peitalin/vim-jsx-typescript'
+
 call vundle#end()
 
 syntax enable "Enable syntax highlighting
@@ -71,3 +74,5 @@ endif
 syntax on
 color dracula
 g:dracula_italic = 0
+
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
