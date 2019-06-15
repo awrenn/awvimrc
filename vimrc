@@ -51,6 +51,11 @@ let g:airline#extensions#tabline#enabled = 1
 
 map <C-o> :NERDTreeToggle<CR>
 
+" Window op helpers
+nnoremap <C-a> <C-w><
+nnoremap <C-d> <C-w>>
+nnoremap <C-j> <C-w>v
+
 let fts = ['go']
 if index(fts, &filetype) > -1
     map <C-c> :GoFmt<CR>
