@@ -24,7 +24,8 @@ Plugin 'dart-lang/dart-vim-plugin'
 
 Plugin 'rust-lang/rust.vim'
 
-Plugin 'dracula/vim'
+"Plugin 'dracula/vim'
+Plugin 'morhetz/gruvbox'
 
 Plugin 'leafgarland/typescript-vim'
 Plugin 'peitalin/vim-jsx-typescript'
@@ -63,16 +64,22 @@ if index(fts, &filetype) > -1
 endif
 
 set background=dark
+set t_Co=256
 set tabstop=4
 set shiftwidth=4
 set expandtab
 
+let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_termcolors = "256"
+color gruvbox
+
+"let g:dracula_italic = 0
+"color dracula
+"
 if has('macunix')
     set backspace=indent,eol,start
 endif
 
 syntax on
-color dracula
-g:dracula_italic = 0
 
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
