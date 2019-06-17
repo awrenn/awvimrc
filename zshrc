@@ -9,7 +9,8 @@
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 #
-ZSH_THEME="muse"
+ZSH_THEME = "af-magic"
+#ZSH_THEME="muse"
 #ZSH_THEME="robbyrussell"
 #ZSH_THEME="avit"
 #ZSH_THEME="agnoster"
