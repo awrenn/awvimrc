@@ -59,6 +59,12 @@ map <C-o> :NERDTreeToggle<CR>
 
 nnoremap wq :wq<CR>
 
+function ToggleNumbers()
+    set number!
+    set relativenumber!
+endfunction
+nnoremap <C-n> :call ToggleNumbers()<CR>
+
 " Window op helpers
 nnoremap <C-a> <C-w><
 nnoremap <C-d> <C-w>>
