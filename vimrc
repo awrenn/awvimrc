@@ -1,4 +1,4 @@
-filetype plugin indent on
+filetype plugin on
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -63,20 +63,16 @@ nnoremap wq :wq<CR>
 nnoremap <C-a> <C-w><
 nnoremap <C-d> <C-w>>
 nnoremap <C-j> <C-w>v
+nnoremap <C-h> <C-w><Left>
+nnoremap <C-l> <C-w><Right>
 
-let jss = ["typescript.tsx"]
-"au BufRead,BufNewFile *.tsx set filetype=js
-if ('go' == &filetype)
-    map <C-c> :GoFmt<CR>
-    map <C-t> :GoTest<CR>
-elseif ('rs' == &filetype)
-    map <C-c> :RustFmt<CR>
-    map <C-t> :RustTest<CR>
-elseif index(jss, &filetype) > -1
-    map <C-c> :FormatCode clang-format<CR>
-else
-    map <C-c> :FormatCode<CR>
-endif
+au BufRead,BufNewFile *.tsx set filetype=typescript.tsx
+au BufRead,BufNewFile *.rs set filetype=rust
+
+au BufRead,BufNewFile * nnoremap <C-c> :FormatCode prettier<CR>
+au FileType typescript.tsx nnoremap <C-c> :FormatCode prettier<CR>
+au FileType rust nnoremap <C-c> :RustFmt<CR>
+au FileType rust nnoremap <C-t> :RustTest<CR>
 
 " Other code formatting things
 
@@ -96,6 +92,3 @@ color gruvbox
 if has('macunix')
     set backspace=indent,eol,start
 endif
-
-
-autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx

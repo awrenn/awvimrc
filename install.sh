@@ -31,7 +31,6 @@ function gnome {
 
 function tmux {
     cp tmux.conf ~/.tmuf.config
-    tmux source-file ~/.tmux.config
 }
 
 case $1 in
