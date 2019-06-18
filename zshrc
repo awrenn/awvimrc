@@ -14,12 +14,9 @@ ZSH_THEME = "af-magic"
 #ZSH_THEME="robbyrussell"
 #ZSH_THEME="avit"
 #ZSH_THEME="agnoster"
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+#
+# The most important command in this file
+bindkey -v
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
