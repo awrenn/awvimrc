@@ -58,6 +58,7 @@ let g:airline#extensions#tabline#enabled = 1
 map <C-o> :NERDTreeToggle<CR>
 
 nnoremap wq :wq<CR>
+command W :w
 
 function ToggleNumbers()
     set number!
