@@ -1,4 +1,3 @@
-filetype off
 filetype plugin indent on
 
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -59,30 +58,33 @@ let g:airline#extensions#tabline#enabled = 1
 map <C-o> :NERDTreeToggle<CR>
 
 nnoremap wq :wq<CR>
-command W :w
-nnoremap W :w
 
-function ToggleNumbers()
+function ToggleNums()
     set number!
     set relativenumber!
 endfunction
-nnoremap <C-n> :call ToggleNumbers()<CR>
+
+nnoremap <C-n> :call ToggleNums()<CR>
+
 
 " Window op helpers
 nnoremap <C-a> <C-w><
 nnoremap <C-d> <C-w>>
 nnoremap <C-j> <C-w>v
-nnoremap <C-h> <C-w><Left>
-nnoremap <C-l> <C-w><Right>
 
-au BufRead,BufNewFile *.tsx set filetype=typescript.tsx
-au BufRead,BufNewFile *.rs set filetype=rust
-
-autocmd BufRead,BufNewFile * nnoremap <buffer> <C-c> :FormatCode<CR>
-autocmd BufRead,BufNewFile *.tsx nnoremap <buffer> <C-c> :FormatCode prettier<CR>
-
-autocmd BufRead,BufNewFile *.rs nnoremap <buffer> <C-c> :RustFmt<CR>
-autocmd BufRead,BufNewFile *.rs nnoremap <buffer> <C-t> :RustTest<CR>
+let jss = ["typescript.tsx"]
+"au BufRead,BufNewFile *.tsx set filetype=js
+if ('go' == &filetype)
+    map <C-c> :GoFmt<CR>
+    map <C-t> :GoTest<CR>
+elseif ('rs' == &filetype)
+    map <C-c> :RustFmt<CR>
+    map <C-t> :RustTest<CR>
+elseif index(jss, &filetype) > -1
+    map <C-c> :FormatCode clang-format<CR>
+else
+    map <C-c> :FormatCode<CR>
+endif
 
 " Other code formatting things
 
@@ -102,3 +104,7 @@ color gruvbox
 if has('macunix')
     set backspace=indent,eol,start
 endif
+
+
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
+
