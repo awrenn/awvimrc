@@ -16,9 +16,10 @@ function byobu() {
 function zsh() {
   ZSH_CUSTOM=$HOME/.oh-my-zsh/custom
   wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O /tmp/oh_my_zsh.sh
-  sh "/tmp/oh_my_zsh.sh"
+  echo "exit" | sh "/tmp/oh_my_zsh.sh"
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM}/plugins/zsh-syntax-highlighting
   git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM}/plugins/zsh-autosuggestions
+
   cp ./zshrc $HOME/.zshrc
 }
 
@@ -68,8 +69,8 @@ case $1 in
   all*)
     vimrc
     tmux
-    zsh
     gnome
     xorg
+    zsh
     ;;
 esac
