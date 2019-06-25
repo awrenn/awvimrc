@@ -35,6 +35,9 @@ Plugin 'google/vim-maktaba'
 Plugin 'google/vim-codefmt'
 Plugin 'google/vim-glaive'
 
+" Pretty html lines
+Plugin 'Yggdroot/indentLine'
+
 call vundle#end()
 call glaive#Install()
 
