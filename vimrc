@@ -1,5 +1,9 @@
+<<<<<<< Updated upstream
 filetype off
 filetype plugin indent on
+=======
+filetype plugin on
+>>>>>>> Stashed changes
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -81,11 +85,18 @@ nnoremap <C-l> <C-w><Right>
 au BufRead,BufNewFile *.tsx set filetype=typescript.tsx
 au BufRead,BufNewFile *.rs set filetype=rust
 
+<<<<<<< Updated upstream
 autocmd BufRead,BufNewFile * nnoremap <buffer> <C-c> :FormatCode<CR>
 autocmd BufRead,BufNewFile *.tsx nnoremap <buffer> <C-c> :FormatCode prettier<CR>
 
 autocmd BufRead,BufNewFile *.rs nnoremap <buffer> <C-c> :RustFmt<CR>
 autocmd BufRead,BufNewFile *.rs nnoremap <buffer> <C-t> :RustTest<CR>
+=======
+au BufRead,BufNewFile * nnoremap <C-c> :FormatCode prettier<CR>
+au FileType typescript.tsx nnoremap <C-c> :FormatCode prettier<CR>
+au FileType rust nnoremap <C-c> :RustFmt<CR>
+au FileType rust nnoremap <C-t> :RustTest<CR>
+>>>>>>> Stashed changes
 
 " Other code formatting things
 

@@ -39,10 +39,6 @@ function xmonad() {
   ##xmonad --recompile
 }
 
-function xorg() {
-    cp ./Xresources ~/.Xresources
-}
-
 function pacman() {
     pacman -S networkmanager plasma zsh git
 }
