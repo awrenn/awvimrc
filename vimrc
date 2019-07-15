@@ -1,9 +1,4 @@
-<<<<<<< Updated upstream
 filetype off
-filetype plugin indent on
-=======
-filetype plugin on
->>>>>>> Stashed changes
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -45,6 +40,8 @@ Plugin 'Yggdroot/indentLine'
 call vundle#end()
 call glaive#Install()
 
+filetype plugin indent on
+
 syntax enable "Enable syntax highlighting
 syntax on
 if v:version > 703
@@ -82,21 +79,26 @@ nnoremap <C-j> <C-w>v
 nnoremap <C-h> <C-w><Left>
 nnoremap <C-l> <C-w><Right>
 
+function LowerTerm()
+    term    
+endfunction
+nnoremap T :call LowerTerm()<CR>
+
 au BufRead,BufNewFile *.tsx set filetype=typescript.tsx
 au BufRead,BufNewFile *.rs set filetype=rust
 
-<<<<<<< Updated upstream
-autocmd BufRead,BufNewFile * nnoremap <buffer> <C-c> :FormatCode<CR>
-autocmd BufRead,BufNewFile *.tsx nnoremap <buffer> <C-c> :FormatCode prettier<CR>
+au FileType * nnoremap <buffer> <C-c> :FormatCode<CR>
 
-autocmd BufRead,BufNewFile *.rs nnoremap <buffer> <C-c> :RustFmt<CR>
-autocmd BufRead,BufNewFile *.rs nnoremap <buffer> <C-t> :RustTest<CR>
-=======
-au BufRead,BufNewFile * nnoremap <C-c> :FormatCode prettier<CR>
-au FileType typescript.tsx nnoremap <C-c> :FormatCode prettier<CR>
-au FileType rust nnoremap <C-c> :RustFmt<CR>
-au FileType rust nnoremap <C-t> :RustTest<CR>
->>>>>>> Stashed changes
+au Filetype tsx nnoremap <buffer> <C-c> :FormatCode prettier<CR>
+
+augroup rust
+    au FileType rust nnoremap <buffer> <C-c> :RustFmt<CR>
+    au FileType rust nnoremap <buffer> <C-t> :RustTest<CR>
+    au FileType rust nnoremap <buffer> <Space> za
+    au FileType rust zR
+    au FileType rust setlocal foldmethod=syntax
+augroup end
+
 
 " Other code formatting things
 
