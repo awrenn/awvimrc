@@ -87,15 +87,21 @@ nnoremap T :call LowerTerm()<CR>
 au BufRead,BufNewFile *.tsx set filetype=typescript.tsx
 au BufRead,BufNewFile *.rs set filetype=rust
 
-au FileType * nnoremap <buffer> <C-c> :FormatCode<CR>
+augroup All
+    au FileType * nnoremap <buffer> <C-c> :FormatCode<CR>
+    au FileType * setlocal foldmethod=syntax
+    au FileType * norm zR
+augroup end
 
-au Filetype tsx nnoremap <buffer> <C-c> :FormatCode prettier<CR>
+augroup Html
+    au FileType html setlocal foldmethod=indent
+    au FileType html norm zR
+augroup end
 
 augroup rust
     au FileType rust nnoremap <buffer> <C-c> :RustFmt<CR>
     au FileType rust nnoremap <buffer> <C-t> :RustTest<CR>
     au FileType rust nnoremap <buffer> <Space> za
-    au FileType rust zR
     au FileType rust setlocal foldmethod=syntax
 augroup end
 
