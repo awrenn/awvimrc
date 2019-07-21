@@ -5,7 +5,15 @@ function vimrc() {
   cp vimrc $HOME/.vimrc
   git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
   vim -c :PluginInstall -c :q -c :q
-  python2 $(find $HOME/.vim -name install.py | grep YouCompleteMe)
+  python2.7 $(find $HOME/.vim -name install.py | grep YouCompleteMe)
+}
+
+function nvimrc() {
+  mkdir -p $HOME/.config/nvim/bundle
+  git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.config/nvim/bundle/Vundle.vim
+  cp vimrc ~/.config/nvim/init.vim
+  nvim -c :PluginInstall -c :q -c :q
+  python2.7 $(find $HOME/.vim -name install.py | grep YouCompleteMe)
 }
 
 function byobu() {
@@ -40,7 +48,7 @@ function xmonad() {
 }
 
 function pacman() {
-    pacman -S networkmanager plasma zsh git
+  pacman -S networkmanager plasma zsh git
 }
 
 case $1 in
@@ -62,8 +70,12 @@ case $1 in
   xmonad*)
     xmonad
     ;;
+  nvimrc*)
+    nvimrc
+    ;;
   all*)
     vimrc
+    nvim
     tmux
     gnome
     xorg

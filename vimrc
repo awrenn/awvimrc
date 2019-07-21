@@ -6,7 +6,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'scrooloose/nerdtree'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 
 " Buttom bar
 Plugin 'vim-airline/vim-airline'
@@ -36,6 +36,9 @@ Plugin 'google/vim-glaive'
 
 " Pretty html lines
 Plugin 'Yggdroot/indentLine'
+
+" Intellisense
+Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 
 call vundle#end()
 call glaive#Install()
@@ -124,3 +127,5 @@ color gruvbox
 if has('macunix')
     set backspace=indent,eol,start
 endif
+
+set timeoutlen=1000 ttimeoutlen=0

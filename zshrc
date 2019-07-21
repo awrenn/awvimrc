@@ -14,6 +14,7 @@ plugins=(
     git
     zsh-syntax-highlighting
     zsh-autosuggestions
+    colorize
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -23,3 +24,4 @@ bindkey -v
 
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+KEYTIMEOUT=.1
