@@ -105,6 +105,7 @@ augroup rust
     au FileType rust nnoremap <buffer> <C-c> :RustFmt<CR>
     au FileType rust nnoremap <buffer> <C-t> :RustTest<CR>
     au FileType rust nnoremap <buffer> <Space> za
+    au FileType rust normal zR
     au FileType rust setlocal foldmethod=syntax
 augroup end
 
