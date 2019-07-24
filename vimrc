@@ -1,46 +1,46 @@
 filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+set rtp+=~/.config/nvim/bundle/vim-plug
+call plug#begin("~/.config/nvim/bundle")
 
-Plugin 'VundleVim/Vundle.vim'
+Plug 'junegunn/vim-plug'
 
-Plugin 'scrooloose/nerdtree'
-"Plugin 'Valloric/YouCompleteMe'
+Plug 'scrooloose/nerdtree'
+"Plug 'Valloric/YouCompleteMe'
 
 " Buttom bar
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " Change dates with <C-A> and <C-X>
-Plugin 'tpope/vim-speeddating'
+Plug 'tpope/vim-speeddating'
 " Adding support for surround <s> as a phrase type
 " ex: cs'" replace outside ' with "
-Plugin 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 " Better . support
-Plugin 'tpope/vim-repeat'
+Plug 'tpope/vim-repeat'
 
-Plugin 'dart-lang/dart-vim-plugin'
+Plug 'dart-lang/dart-vim-plugin'
 
-Plugin 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim'
 
-"Plugin 'dracula/vim'
-Plugin 'morhetz/gruvbox'
+"Plug 'dracula/vim'
+Plug 'morhetz/gruvbox'
 
-Plugin 'leafgarland/typescript-vim'
-Plugin 'peitalin/vim-jsx-typescript'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 
-Plugin 'google/vim-maktaba'
-Plugin 'google/vim-codefmt'
-Plugin 'google/vim-glaive'
+Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
+Plug 'google/vim-glaive'
 
 " Pretty html lines
-Plugin 'Yggdroot/indentLine'
+Plug 'Yggdroot/indentLine'
 
 " Intellisense
-Plugin 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-call vundle#end()
+call plug#end()
 call glaive#Install()
 
 filetype plugin indent on

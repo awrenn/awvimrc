@@ -1,18 +1,12 @@
 #!/bin/bash
 set -u
 
-function vimrc() {
-  cp vimrc $HOME/.vimrc
-  git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
-  vim -c :PluginInstall -c :q -c :q
-  python2.7 $(find $HOME/.vim -name install.py | grep YouCompleteMe)
-}
-
 function nvimrc() {
   mkdir -p $HOME/.config/nvim/bundle
-  git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.config/nvim/bundle/Vundle.vim
+   curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   cp vimrc ~/.config/nvim/init.vim
-  nvim -c :PluginInstall -c :q -c :q
+  nvim -c :PlugInstall -c :q -c :q
   python2.7 $(find $HOME/.vim -name install.py | grep YouCompleteMe)
 }
 
@@ -74,8 +68,7 @@ case $1 in
     nvimrc
     ;;
   all*)
-    vimrc
-    nvim
+    nvimrc
     tmux
     gnome
     xorg
