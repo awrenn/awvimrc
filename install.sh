@@ -3,7 +3,7 @@ set -u
 
 function nvimrc() {
   mkdir -p $HOME/.config/nvim/bundle
-   curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+  curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   cp vimrc ~/.config/nvim/init.vim
   nvim -c :PlugInstall -c :q -c :q
@@ -21,7 +21,7 @@ function zsh() {
   echo "exit" | sh "/tmp/oh_my_zsh.sh"
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM}/plugins/zsh-syntax-highlighting
   git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM}/plugins/zsh-autosuggestions
-
+  cp ./af-magic.zsh-theme $HOME/.oh-my-zsh/themes
   cp ./zshrc $HOME/.zshrc
 }
 
