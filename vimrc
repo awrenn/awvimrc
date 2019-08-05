@@ -99,14 +99,28 @@ augroup end
 augroup Html
     au FileType html setlocal foldmethod=indent
     au FileType html norm zR
+    au FileType html nnoremap <buffer> <Space> za
 augroup end
 
-augroup rust
+augroup Xml
+    au FileType xml setlocal foldmethod=indent
+    au FileType xml norm zR
+    au FileType xml nnoremap <buffer> <Space> za
+augroup end
+
+augroup Rust
     au FileType rust nnoremap <buffer> <C-c> :RustFmt<CR>
     au FileType rust nnoremap <buffer> <C-t> :RustTest<CR>
     au FileType rust nnoremap <buffer> <Space> za
     au FileType rust normal zR
     au FileType rust setlocal foldmethod=syntax
+augroup end
+
+augroup Go
+    au FileType go nnoremap <buffer> <C-t> :GoTest<CR>
+    au FileType go nnoremap <buffer> <Space> za
+    au FileType go normal zR
+
 augroup end
 
 
