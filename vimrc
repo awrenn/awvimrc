@@ -40,6 +40,9 @@ Plug 'Yggdroot/indentLine'
 " Intellisense
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+Plug 'elixir-editors/vim-elixir'
+Plug 'mhinz/vim-mix-format'
+
 call plug#end()
 call glaive#Install()
 
@@ -89,6 +92,8 @@ nnoremap T :call LowerTerm()<CR>
 
 au BufRead,BufNewFile *.tsx set filetype=typescript.tsx
 au BufRead,BufNewFile *.rs set filetype=rust
+au BufRead,BufNewFile *.exs set filetype=elixir
+au BufRead,BufNewFile *.ex set filetype=elixir
 
 augroup All
     au FileType * nnoremap <buffer> <C-c> :FormatCode<CR>
@@ -118,9 +123,10 @@ augroup end
 
 augroup Go
     au FileType go nnoremap <buffer> <C-t> :GoTest<CR>
-    au FileType go nnoremap <buffer> <Space> za
-    au FileType go normal zR
+augroup end
 
+augroup Elixir
+    au FileType elixir nnoremap <buffer> <C-c> :MixFormat<CR>
 augroup end
 
 
