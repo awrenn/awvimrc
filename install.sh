@@ -7,7 +7,17 @@ function nvimrc() {
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   cp vimrc ~/.config/nvim/init.vim
   nvim -c :PlugInstall -c :q -c :q
-  python2.7 $(find $HOME/.vim -name install.py | grep YouCompleteMe)
+  #python2.7 $(find $HOME/.config -name install.py | grep YouCompleteMe)
+}
+
+function nvim() {
+  sudo add-apt-repository ppa:neovim-ppa/stable
+  sudo apt-get update
+  sudo apt-get install neovim \
+                        npm \
+                        nodejs
+  sudo rm -rf /usr/bin/vim
+  sudo ln -s $(which nvim) /usr/bin/vim
 }
 
 function byobu() {
@@ -66,6 +76,9 @@ case $1 in
     ;;
   nvimrc*)
     nvimrc
+    ;;
+  nvim*)
+    nvim
     ;;
   all*)
     nvimrc
