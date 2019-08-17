@@ -11,11 +11,21 @@ function nvimrc() {
 }
 
 function nvim() {
-  sudo add-apt-repository ppa:neovim-ppa/stable
-  sudo apt-get update
-  sudo apt-get install neovim \
-                        npm \
-                        nodejs
+  uname -a | grep Ubuntu
+  if [ $? -eq 0 ]; then 
+      sudo add-apt-repository ppa:neovim-ppa/stable
+      sudo apt-get update
+      sudo apt-get install neovim \
+                            npm \
+                            nodejs
+  fi
+  uname -a | grep Arch
+  if [ $? -eq 0 ]; then 
+      sudo pacman -S neovim \
+                     npm \
+                     nodejs
+  fi
+
   sudo rm -rf /usr/bin/vim
   sudo ln -s $(which nvim) /usr/bin/vim
 }
@@ -83,7 +93,6 @@ case $1 in
   all*)
     nvimrc
     tmux
-    gnome
     xorg
     zsh
     ;;
