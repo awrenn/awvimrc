@@ -43,6 +43,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'elixir-editors/vim-elixir'
 Plug 'mhinz/vim-mix-format'
 
+Plug 'mustache/vim-mustache-handlebars'
+
 call plug#end()
 call glaive#Install()
 
@@ -94,6 +96,7 @@ au BufRead,BufNewFile *.tsx set filetype=typescript.tsx
 au BufRead,BufNewFile *.rs set filetype=rust
 au BufRead,BufNewFile *.exs set filetype=elixir
 au BufRead,BufNewFile *.ex set filetype=elixir
+au BufNewFile,BufRead *.ejs set filetype=html
 
 augroup All
     au FileType * nnoremap <buffer> <C-c> :FormatCode<CR>
