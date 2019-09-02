@@ -25,3 +25,4 @@ bindkey -v
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 KEYTIMEOUT=.1
+alias emacs="emacs --no-window-system"
