@@ -94,9 +94,12 @@ nnoremap T :call LowerTerm()<CR>
 
 au BufRead,BufNewFile *.tsx set filetype=typescript.tsx
 au BufRead,BufNewFile *.rs set filetype=rust
+
 au BufRead,BufNewFile *.exs set filetype=elixir
 au BufRead,BufNewFile *.ex set filetype=elixir
+
 au BufNewFile,BufRead *.ejs set filetype=html
+au BufNewFile,BufRead *.mustache set filetype=html
 
 augroup All
     au FileType * nnoremap <buffer> <C-c> :FormatCode<CR>

@@ -2,6 +2,7 @@
 set -u
 
 function nvimrc() {
+    echo rc
   mkdir -p $HOME/.config/nvim/bundle
   curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -10,7 +11,8 @@ function nvimrc() {
   #python2.7 $(find $HOME/.config -name install.py | grep YouCompleteMe)
 }
 
-function nvim() {
+function invim() {
+    echo regular
   uname -a | grep Ubuntu
   if [ $? -eq 0 ]; then 
       sudo add-apt-repository ppa:neovim-ppa/stable
@@ -89,7 +91,7 @@ case $1 in
     nvimrc
     ;;
   nvim*)
-    nvim
+    invim
     ;;
   all*)
     nvimrc
