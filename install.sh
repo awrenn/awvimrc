@@ -2,7 +2,6 @@
 set -u
 
 function nvimrc() {
-    echo rc
   mkdir -p $HOME/.config/nvim/bundle
   curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -38,6 +37,7 @@ function byobu() {
 }
 
 function zsh() {
+  sudo apt update; sudo apt install zsh
   ZSH_CUSTOM=$HOME/.oh-my-zsh/custom
   wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O /tmp/oh-my-zsh.sh
   echo exit | sh "/tmp/oh-my-zsh.sh"
