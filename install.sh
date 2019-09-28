@@ -11,7 +11,6 @@ function nvimrc() {
 }
 
 function invim() {
-    echo regular
   uname -a | grep Ubuntu
   if [ $? -eq 0 ]; then 
       sudo add-apt-repository ppa:neovim-ppa/stable
@@ -20,11 +19,24 @@ function invim() {
                             npm \
                             nodejs
   fi
+  uname -a | grep raspberrypi
+  if [ $? -eq 0 ]; then 
+      sudo apt install npm nodejs -y
+      curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+      cp vimrc ~/..vimrc 
+      vim -c :PlugInstall -c :q -c :q
+      return
+  fi
   uname -a | grep Arch
   if [ $? -eq 0 ]; then 
       sudo pacman -S neovim \
                      npm \
                      nodejs
+  fi
+  which nvim
+  if [ $? -ne 0 ]; then
+	return
   fi
 
   sudo rm -rf /usr/bin/vim
@@ -37,7 +49,7 @@ function byobu() {
 }
 
 function zsh() {
-  sudo apt update; sudo apt install zsh
+  sudo apt update; sudo apt install zsh -y
   ZSH_CUSTOM=$HOME/.oh-my-zsh/custom
   wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O /tmp/oh-my-zsh.sh
   echo exit | sh "/tmp/oh-my-zsh.sh"
