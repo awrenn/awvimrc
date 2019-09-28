@@ -57,7 +57,7 @@ function zsh() {
   git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM}/plugins/zsh-autosuggestions
   cp ./af-magic.zsh-theme $HOME/.oh-my-zsh/themes
   cp ./zshrc $HOME/.zshrc
-  sudo chsh -s $(which zsh) acwrenn
+  sudo chsh -s $(which zsh) $(whoami)
 }
 
 function gnome() {
