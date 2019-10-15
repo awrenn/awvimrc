@@ -15,16 +15,19 @@ function invim() {
   if [ $? -eq 0 ]; then 
       sudo add-apt-repository ppa:neovim-ppa/stable
       sudo apt-get update
-      sudo apt-get install neovim \
+      sudo apt-get install -y neovim \
                             npm \
                             nodejs
   fi
   uname -a | grep raspberrypi
   if [ $? -eq 0 ]; then 
-      sudo apt install npm nodejs -y
+      sudo apt update
+      sudo apt install -y vim \
+                        npm \
+                        nodejs 
       curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-      cp vimrc ~/..vimrc 
+      cp vimrc ~/.vimrc 
       vim -c :PlugInstall -c :q -c :q
       return
   fi
