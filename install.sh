@@ -19,6 +19,12 @@ function invim() {
                             npm \
                             nodejs
   fi
+  uname -a | grep el7
+  if [ $? -eq 0 ]; then 
+      sudo yum install -y neovim \
+                            npm \
+                            nodejs
+  fi
   uname -a | grep raspberrypi
   if [ $? -eq 0 ]; then 
       sudo apt update
