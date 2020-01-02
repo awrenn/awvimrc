@@ -99,7 +99,6 @@ au BufRead,BufNewFile *.exs set filetype=elixir
 au BufRead,BufNewFile *.ex set filetype=elixir
 
 au BufNewFile,BufRead *.ejs set filetype=html
-au BufNewFile,BufRead *.mustache set filetype=html
 
 augroup All
     au FileType * nnoremap <buffer> <C-c> :FormatCode<CR>
@@ -125,6 +124,7 @@ augroup Rust
     au FileType rust nnoremap <buffer> <Space> za
     au FileType rust normal zR
     au FileType rust setlocal foldmethod=syntax
+    let g:rustfmt_command="rustfmt --edition 2018"
 augroup end
 
 augroup Go
@@ -156,3 +156,4 @@ if has('macunix')
 endif
 
 set timeoutlen=1000 ttimeoutlen=0
+set shell=/bin/sh
