@@ -98,6 +98,8 @@ au BufRead,BufNewFile *.rs set filetype=rust
 au BufRead,BufNewFile *.exs set filetype=elixir
 au BufRead,BufNewFile *.ex set filetype=elixir
 
+au BufRead,BufNewFile *.mustache set filetype=mustache
+
 au BufNewFile,BufRead *.ejs set filetype=html
 
 augroup All
@@ -125,6 +127,16 @@ augroup Rust
     au FileType rust normal zR
     au FileType rust setlocal foldmethod=syntax
     let g:rustfmt_command="rustfmt --edition 2018"
+augroup end
+
+function SetupMustache()
+    Glaive codefmt plugin[mappings]
+    Glaive codefmt prettier_options=`["--parser", "html"]`
+endfunction
+
+augroup Mustache
+    autocmd FileType mustache :call SetupMustache()
+    au FileType mustache AutoFormatBuffer prettier
 augroup end
 
 augroup Go
