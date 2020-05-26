@@ -1,0 +1,14 @@
+network:
+  version: 2
+  renderer: "networkd"
+  wifis:
+      wlp6s0:
+        dhcp4: no
+        addresses:
+        - "172.16.1.2/24"
+        gateway4: "172.16.1.1"
+        nameservers:
+            addresses: ["172.16.1.1"]
+        access-points:
+            CCCHS:
+                password: "CarCloudRules"

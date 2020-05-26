@@ -69,6 +69,7 @@ let g:airline_theme = "papercolor"
 let g:airline#extensions#tabline#enabled = 1
 
 map <C-o> :NERDTreeToggle<CR>
+nnoremap <C-c> :AutoFormatBuffer<CR>
 
 nnoremap wq :wq<CR>
 nnoremap QQ :q!<CR>

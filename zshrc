@@ -26,3 +26,4 @@ bindkey -v
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 KEYTIMEOUT=.1
 alias emacs="emacs --no-window-system"
+eval $(dircolors -p | sed -e 's/DIR 01;34/DIR 01;36/' | dircolors /dev/stdin)
