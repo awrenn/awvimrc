@@ -26,6 +26,7 @@ bindkey -v
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 KEYTIMEOUT=.1
 alias emacs="emacs --no-window-system"
+eval $(dircolors -p | sed -e 's/DIR 01;34/DIR 01;36/' | dircolors /dev/stdin)
 export PATH="/home/acwrenn/go/bin:$PATH"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH=$PATH:/snap/bin
