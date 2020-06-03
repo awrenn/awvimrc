@@ -102,6 +102,8 @@ au BufRead,BufNewFile *.mustache set filetype=mustache
 
 au BufNewFile,BufRead *.ejs set filetype=html
 
+au BufNewFile,BufRead *.yaml.template set filetype=yaml
+
 augroup All
     au FileType * nnoremap <buffer> <C-c> :FormatCode<CR>
     au FileType * setlocal foldmethod=syntax
@@ -134,9 +136,18 @@ function SetupMustache()
     Glaive codefmt prettier_options=`["--parser", "html"]`
 endfunction
 
+function SetupSedTemplate()
+    Glaive codefmt plugin[mappings]
+    Glaive codefmt prettier_options=`["--parser", "yaml"]`
+endfunction
+
 augroup Mustache
     autocmd FileType mustache :call SetupMustache()
     au FileType mustache AutoFormatBuffer prettier
+augroup end
+
+augroup Template
+    autocmd FileType yaml :call SetupSedTemplate()
 augroup end
 
 augroup Go
@@ -169,3 +180,6 @@ endif
 
 set timeoutlen=1000 ttimeoutlen=0
 set shell=/bin/sh
+set conceallevel=0
+let g:vim_json_conceal=0
+let g:indentLine_conceallevel = 0
