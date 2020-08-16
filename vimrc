@@ -93,6 +93,7 @@ function LowerTerm()
 endfunction
 nnoremap T :call LowerTerm()<CR>
 
+au BufRead,BufNewFile *.json set filetype=json
 au BufRead,BufNewFile *.tsx set filetype=typescript.tsx
 au BufRead,BufNewFile *.rs set filetype=rust
 
@@ -104,6 +105,7 @@ au BufRead,BufNewFile *.mustache set filetype=mustache
 au BufNewFile,BufRead *.ejs set filetype=html
 
 au BufNewFile,BufRead *.yaml.template set filetype=yaml
+
 
 augroup All
     au FileType * nnoremap <buffer> <C-c> :FormatCode<CR>
@@ -159,6 +161,10 @@ augroup Elixir
     au FileType elixir nnoremap <buffer> <C-c> :MixFormat<CR>
 augroup end
 
+augroup JSON
+    au FileType json setlocal conceallevel=0
+augroup end
+
 
 " Other code formatting things
 
@@ -181,6 +187,5 @@ endif
 
 set timeoutlen=1000 ttimeoutlen=0
 set shell=/bin/sh
-set conceallevel=0
 let g:vim_json_conceal=0
-let g:indentLine_conceallevel = 0
+let g:indentLine_conceallevel=0
