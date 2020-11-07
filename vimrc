@@ -42,6 +42,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'elixir-editors/vim-elixir'
 Plug 'mhinz/vim-mix-format'
+Plug 'habamax/vim-godot'
 
 Plug 'mustache/vim-mustache-handlebars'
 
