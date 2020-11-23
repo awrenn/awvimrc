@@ -96,6 +96,11 @@ function i3() {
   cp i3 $HOME/.config/i3/config
 }
 
+function conky() {
+    mkdir -p $HOME/.config/conky
+    cp conkyrc $HOME/.config/conky/conkyrc
+}
+
 case $1 in
   vimrc*)
     vimrc
@@ -124,9 +129,14 @@ case $1 in
   i3*)
     i3
     ;;
+  conky*)
+    conky
+    ;;
   all*)
     nvimrc
     tmux
     zsh
+    i3
+    conky
     ;;
 esac

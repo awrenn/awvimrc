@@ -183,3 +183,7 @@ bar {
 
 ## Andrew Custom
 bindsym $mod+p move workspace to output right
+
+exec_always start-pulseaudio-x11
+exec --no-startup-id feh --bg-scale ~/RTJ4_desktop-343561.jpg
+exec --no-startup-id conky -c ~/.config/conky/conkyrc
