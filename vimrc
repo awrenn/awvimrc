@@ -145,6 +145,12 @@ function SetupSedTemplate()
     Glaive codefmt prettier_options=`["--parser", "yaml"]`
 endfunction
 
+function SetupTSX()
+    Glaive codefmt plugin[mappings]
+    Glaive codefmt prettier_options=`["--parser", "typescript"]`
+endfunction
+
+
 augroup Mustache
     autocmd FileType mustache :call SetupMustache()
     au FileType mustache AutoFormatBuffer prettier
@@ -164,6 +170,11 @@ augroup end
 
 augroup JSON
     au FileType json setlocal conceallevel=0
+augroup end
+
+augroup Typescript
+    autocmd FileType typescript.tsx :call SetupTSX()
+    au FileType typescript.tsx AutoFormatBuffer prettier
 augroup end
 
 
