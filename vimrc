@@ -195,6 +195,7 @@ color gruvbox
 "
 if has('macunix')
     set backspace=indent,eol,start
+    set conceallevel=0
 endif
 
 set timeoutlen=1000 ttimeoutlen=0
