@@ -1,6 +1,29 @@
 #!/bin/bash
 set -u
 
+function fishrc() {
+  curl -L https://get.oh-my.fish | fish
+  echo "TBD - fishrc"
+}
+
+function ifish() {
+  sudo apt update
+  sudo apt install fish -y
+}
+
+function terminatorrc() {
+  mkdir -p ~/.config/terminator
+  cp ./terminator ~/.config/terminator/config
+  curl -L https://pcaro.es/d/otf-hermit-2.0.tar.gz > /tmp/hermit.tar.gz
+  tmp=$(mktemp -d)
+  tar xzf /tmp/hermit.tar.gz -C $tmp
+}
+
+function iterminator() {
+  sudo apt update
+  sudo apt install terminator -y
+}
+
 function nvimrc() {
   mkdir -p $HOME/.config/nvim/bundle
   curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
@@ -97,42 +120,50 @@ function i3() {
 }
 
 function conky() {
-    mkdir -p $HOME/.config/conky
-    cp conkyrc $HOME/.config/conky/conkyrc
+  mkdir -p $HOME/.config/conky
+  cp conkyrc $HOME/.config/conky/conkyrc
 }
 
 case $1 in
-  vimrc*)
+  vimrc)
     vimrc
     ;;
-  byobu*)
+  byobu)
     byobu
     ;;
-  zsh*)
+  zsh)
     zsh
     ;;
-  gnome*)
+  gnome)
     gnome
     ;;
-  tmux*)
+  tmux)
     tmux
     ;;
-  xmonad*)
+  xmonad)
     xmonad
     ;;
-  nvimrc*)
+  nvimrc)
     nvimrc
     ;;
-  nvim*)
+  nvim)
     invim
     ;;
-  i3*)
+  i3)
     i3
     ;;
-  conky*)
+  conky)
     conky
     ;;
-  all*)
+  fish)
+    ifish
+    fishrc
+    ;;
+  terminator)
+    terminatorrc
+    ##iterminator
+    ;;
+  all)
     nvimrc
     tmux
     zsh

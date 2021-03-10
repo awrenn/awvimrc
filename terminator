@@ -1,0 +1,16 @@
+[global_config]
+  inactive_color_offset = 1.0
+[keybindings]
+[profiles]
+  [[default]]
+    cursor_color = "#aaaaaa"
+    font = "Inconsolata 20"
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+[plugins]
