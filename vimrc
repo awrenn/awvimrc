@@ -34,6 +34,8 @@ Plug 'google/vim-maktaba'
 Plug 'google/vim-codefmt'
 Plug 'google/vim-glaive'
 
+Plug 'rodjek/vim-puppet'
+
 " Pretty html lines
 Plug 'Yggdroot/indentLine'
 
