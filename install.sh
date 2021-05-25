@@ -33,6 +33,13 @@ function nvimrc() {
   #python2.7 $(find $HOME/.config -name install.py | grep YouCompleteMe)
 }
 
+function ibrew() {
+  uname -a | grep Darwin
+  if [ $? -eq 0 ]; then
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  fi
+}
+
 function invim() {
   uname -a | grep Ubuntu
   if [ $? -eq 0 ]; then
@@ -47,6 +54,10 @@ function invim() {
     sudo yum install -y neovim \
       npm \
       nodejs
+  fi
+  uname -a | grep Darwin
+  if [ $? -eq 0 ]; then
+      brew install neovim
   fi
   uname -a | grep raspberrypi
   if [ $? -eq 0 ]; then
@@ -84,7 +95,7 @@ function zsh() {
   sudo apt update
   sudo apt install zsh -y
   ZSH_CUSTOM=$HOME/.oh-my-zsh/custom
-  wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O /tmp/oh-my-zsh.sh
+  curl https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh > /tmp/oh-my-zsh.sh
   echo exit | sh "/tmp/oh-my-zsh.sh"
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM}/plugins/zsh-syntax-highlighting
   git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM}/plugins/zsh-autosuggestions
@@ -99,6 +110,13 @@ function gnome() {
   echo ${profile}
   gsettings set "org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:${profile}/" background-color '#00001a'
   gsettings set "org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:${profile}/" foreground-color '#ffffcc'
+}
+
+function itmux() {
+  uname -a | grep Darwin
+  if [ $? -eq 0 ]; then
+    brew install tmux
+  fi
 }
 
 function tmux() {
@@ -138,6 +156,7 @@ case $1 in
     gnome
     ;;
   tmux)
+    itmux
     tmux
     ;;
   xmonad)
@@ -163,6 +182,9 @@ case $1 in
     terminatorrc
     ##iterminator
     ;;
+  brew)
+    ibrew
+  ;;
   all)
     nvimrc
     tmux
