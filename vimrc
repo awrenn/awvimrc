@@ -48,6 +48,8 @@ Plug 'habamax/vim-godot'
 
 Plug 'mustache/vim-mustache-handlebars'
 
+Plug 'ruby-formatter/rufo-vim'
+
 call plug#end()
 call glaive#Install()
 
@@ -168,6 +170,10 @@ augroup end
 
 augroup Elixir
     au FileType elixir nnoremap <buffer> <C-c> :MixFormat<CR>
+augroup end
+
+augroup Ruby
+    au FileType ruby nnoremap <buffer> <C-c> :Rufo<CR>
 augroup end
 
 augroup JSON
