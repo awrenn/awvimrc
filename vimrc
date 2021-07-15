@@ -50,6 +50,10 @@ Plug 'mustache/vim-mustache-handlebars'
 
 Plug 'ruby-formatter/rufo-vim'
 
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+
 call plug#end()
 call glaive#Install()
 
@@ -183,6 +187,13 @@ augroup end
 augroup Typescript
     autocmd FileType typescript.tsx :call SetupTSX()
     au FileType typescript.tsx AutoFormatBuffer prettier
+augroup end
+
+augroup Telescope
+    nnoremap <leader>ff <cmd>Telescope find_files<cr>
+    nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+    nnoremap <leader>fb <cmd>Telescope buffers<cr>
+    nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 augroup end
 
 
