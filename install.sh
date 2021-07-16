@@ -43,7 +43,7 @@ function ibrew() {
 function invim() {
   uname -a | grep Ubuntu
   if [ $? -eq 0 ]; then
-    sudo add-apt-repository ppa:neovim-ppa/stable
+    sudo add-apt-repository ppa:neovim-ppa/unstable
     sudo apt-get update
     sudo apt-get install -y neovim \
       npm \
