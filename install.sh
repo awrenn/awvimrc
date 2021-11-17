@@ -30,6 +30,7 @@ function nvimrc() {
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   cp vimrc ~/.config/nvim/init.vim
   nvim -c :PlugInstall -c :q -c :q
+  nvim -c :CocInstall coc-go -c :q -c :q
   #python2.7 $(find $HOME/.config -name install.py | grep YouCompleteMe)
 }
 
