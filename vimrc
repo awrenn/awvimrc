@@ -46,15 +46,32 @@ Plug 'elixir-editors/vim-elixir'
 Plug 'mhinz/vim-mix-format'
 Plug 'habamax/vim-godot'
 
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
 Plug 'mustache/vim-mustache-handlebars'
 
 Plug 'ruby-formatter/rufo-vim'
 
 Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 
-Plug 'tpope/vim-unimpared'
+" Avante - AI Friend!
+" Deps
+Plug 'nvim-lua/plenary.nvim'
+Plug 'MunifTanjim/nui.nvim'
+Plug 'MeanderingProgrammer/render-markdown.nvim'
+
+" Optional deps
+Plug 'hrsh7th/nvim-cmp'
+Plug 'nvim-tree/nvim-web-devicons' "or Plug 'echasnovski/mini.icons'
+Plug 'HakonHarnes/img-clip.nvim'
+Plug 'zbirenbaum/copilot.lua'
+Plug 'stevearc/dressing.nvim' " for enhanced input UI
+Plug 'folke/snacks.nvim' " for modern input UI
+
+" Yay, pass source=true if you want to build from source
+Plug 'yetone/avante.nvim', { 'branch': 'main', 'do': 'make' }
+
 
 call plug#end()
 call glaive#Install()
@@ -223,3 +240,8 @@ set timeoutlen=1000 ttimeoutlen=0
 set shell=/bin/sh
 let g:vim_json_conceal=0
 let g:indentLine_conceallevel=0
+
+autocmd! User avante.nvim
+lua << EOF
+    require('avante').setup({})
+EOF
