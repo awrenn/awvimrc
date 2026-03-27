@@ -1,0 +1,33 @@
+# Personal notes and temporary files
+rem
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Backup files
+*.backup
+*.bak
+backup/
+
+# Vim/Neovim temporary files
+.netrwhist
+tags
+*.un~
+
+# OS generated files
+Thumbs.db
+desktop.ini
+
+# IDE files
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Compiled files
+*.o
+*.pyc
+__pycache__/
+

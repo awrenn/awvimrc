@@ -1,4 +1,4 @@
-.PHONY: all vimrc nvimrc nvim byobu zsh gnome tmux itmux xmonad i3 conky fish ifish fishrc terminator iterminator terminatorrc brew ibrew help
+.PHONY: all vimrc nvimrc nvim byobu zsh gnome tmux itmux xmonad i3 conky fish ifish fishrc terminator iterminator terminatorrc brew ibrew help backup uninstall check betterlockscreen
 
 # Default target
 all: nvimrc tmux zsh i3 conky
@@ -19,6 +19,10 @@ help:
 	@echo "  fish         - Install and setup fish shell"
 	@echo "  terminator   - Setup terminator configuration"
 	@echo "  brew         - Install homebrew (macOS only)"
+	@echo "  backup       - Backup existing configuration files"
+	@echo "  uninstall    - Remove installed configurations (creates backups)"
+	@echo "  check        - Check which configuration files are installed"
+	@echo "  betterlockscreen - Build i3lock-color and install betterlockscreen"
 
 # Neovim configuration
 nvimrc:
@@ -169,4 +173,92 @@ brew: ibrew
 pacman:
 	@echo "Installing packages with pacman..."
 	pacman -S networkmanager plasma zsh git
+
+# Backup existing configuration files
+backup:
+	@echo "Creating backup of existing configuration files..."
+	@mkdir -p $(HOME)/.config-backup-$(shell date +%Y%m%d-%H%M%S)
+	@BACKUP_DIR=$(HOME)/.config-backup-$(shell date +%Y%m%d-%H%M%S); \
+	echo "Backup directory: $$BACKUP_DIR"; \
+	[ -f $(HOME)/.config/nvim/init.vim ] && cp $(HOME)/.config/nvim/init.vim $$BACKUP_DIR/init.vim && echo "  ✓ Backed up nvim config" || true; \
+	[ -f $(HOME)/.vimrc ] && cp $(HOME)/.vimrc $$BACKUP_DIR/.vimrc && echo "  ✓ Backed up .vimrc" || true; \
+	[ -f $(HOME)/.tmux.conf ] && cp $(HOME)/.tmux.conf $$BACKUP_DIR/.tmux.conf && echo "  ✓ Backed up tmux config" || true; \
+	[ -f $(HOME)/.zshrc ] && cp $(HOME)/.zshrc $$BACKUP_DIR/.zshrc && echo "  ✓ Backed up zsh config" || true; \
+	[ -f $(HOME)/.config/i3/config ] && cp $(HOME)/.config/i3/config $$BACKUP_DIR/i3-config && echo "  ✓ Backed up i3 config" || true; \
+	[ -f $(HOME)/.config/conky/conkyrc ] && cp $(HOME)/.config/conky/conkyrc $$BACKUP_DIR/conkyrc && echo "  ✓ Backed up conky config" || true; \
+	[ -f $(HOME)/.config/terminator/config ] && cp $(HOME)/.config/terminator/config $$BACKUP_DIR/terminator-config && echo "  ✓ Backed up terminator config" || true; \
+	[ -d $(HOME)/.xmonad ] && cp -r $(HOME)/.xmonad $$BACKUP_DIR/xmonad && echo "  ✓ Backed up xmonad config" || true; \
+	[ -f $(HOME)/.byobu/.tmux.conf ] && cp $(HOME)/.byobu/.tmux.conf $$BACKUP_DIR/byobu-tmux.conf && echo "  ✓ Backed up byobu config" || true; \
+	echo "Backup complete!"
+
+# Check which configuration files are installed
+check:
+	@echo "Checking installed configuration files..."
+	@echo ""
+	@echo "Neovim:"
+	@[ -f $(HOME)/.config/nvim/init.vim ] && echo "  ✓ $(HOME)/.config/nvim/init.vim" || echo "  ✗ Not installed"
+	@[ -d $(HOME)/.config/nvim/bundle ] && echo "  ✓ $(HOME)/.config/nvim/bundle" || echo "  ✗ Not installed"
+	@echo ""
+	@echo "Vim:"
+	@[ -f $(HOME)/.vimrc ] && echo "  ✓ $(HOME)/.vimrc" || echo "  ✗ Not installed"
+	@echo ""
+	@echo "Tmux:"
+	@[ -f $(HOME)/.tmux.conf ] && echo "  ✓ $(HOME)/.tmux.conf" || echo "  ✗ Not installed"
+	@echo ""
+	@echo "Zsh:"
+	@[ -f $(HOME)/.zshrc ] && echo "  ✓ $(HOME)/.zshrc" || echo "  ✗ Not installed"
+	@[ -d $(HOME)/.oh-my-zsh ] && echo "  ✓ $(HOME)/.oh-my-zsh" || echo "  ✗ Not installed"
+	@echo ""
+	@echo "i3:"
+	@[ -f $(HOME)/.config/i3/config ] && echo "  ✓ $(HOME)/.config/i3/config" || echo "  ✗ Not installed"
+	@echo ""
+	@echo "Conky:"
+	@[ -f $(HOME)/.config/conky/conkyrc ] && echo "  ✓ $(HOME)/.config/conky/conkyrc" || echo "  ✗ Not installed"
+	@echo ""
+	@echo "Terminator:"
+	@[ -f $(HOME)/.config/terminator/config ] && echo "  ✓ $(HOME)/.config/terminator/config" || echo "  ✗ Not installed"
+	@echo ""
+	@echo "XMonad:"
+	@[ -d $(HOME)/.xmonad ] && echo "  ✓ $(HOME)/.xmonad" || echo "  ✗ Not installed"
+	@echo ""
+	@echo "Byobu:"
+	@[ -f $(HOME)/.byobu/.tmux.conf ] && echo "  ✓ $(HOME)/.byobu/.tmux.conf" || echo "  ✗ Not installed"
+
+# Build i3lock-color and install betterlockscreen
+betterlockscreen:
+	@echo "Installing betterlockscreen dependencies..."
+	sudo apt install -y autoconf gcc make pkg-config libpam0g-dev libcairo2-dev \
+		libfontconfig1-dev libxcb-composite0-dev libev-dev libx11-xcb-dev \
+		libxcb-xkb-dev libxcb-xinerama0-dev libxcb-randr0-dev libxcb-image0-dev \
+		libxcb-util0-dev libxcb-xrm-dev libxkbcommon-dev libxkbcommon-x11-dev \
+		libjpeg-dev libgif-dev
+	@echo "Building i3lock-color..."
+	rm -rf /tmp/i3lock-color
+	git clone https://github.com/Raymo111/i3lock-color.git /tmp/i3lock-color
+	cd /tmp/i3lock-color && autoreconf --force --install
+	mkdir -p /tmp/i3lock-color/build
+	cd /tmp/i3lock-color/build && ../configure --disable-sanitizers && make -j$$(nproc)
+	cd /tmp/i3lock-color/build && sudo make install
+	@echo "Installing betterlockscreen..."
+	wget -q https://raw.githubusercontent.com/betterlockscreen/betterlockscreen/main/betterlockscreen \
+		-O /tmp/betterlockscreen
+	chmod +x /tmp/betterlockscreen
+	sudo install /tmp/betterlockscreen /usr/local/bin/
+	@echo ""
+	@echo "Done! Cache your wallpaper with:"
+	@echo "  betterlockscreen -u /path/to/wallpaper.jpg"
+
+# Uninstall configurations (creates backup first)
+uninstall: backup
+	@echo ""
+	@echo "Removing installed configurations..."
+	@[ -f $(HOME)/.config/nvim/init.vim ] && rm $(HOME)/.config/nvim/init.vim && echo "  ✓ Removed nvim config" || true
+	@[ -f $(HOME)/.tmux.conf ] && rm $(HOME)/.tmux.conf && echo "  ✓ Removed tmux config" || true
+	@[ -f $(HOME)/.zshrc ] && rm $(HOME)/.zshrc && echo "  ✓ Removed zsh config" || true
+	@[ -f $(HOME)/.config/i3/config ] && rm $(HOME)/.config/i3/config && echo "  ✓ Removed i3 config" || true
+	@[ -f $(HOME)/.config/conky/conkyrc ] && rm $(HOME)/.config/conky/conkyrc && echo "  ✓ Removed conky config" || true
+	@[ -f $(HOME)/.config/terminator/config ] && rm $(HOME)/.config/terminator/config && echo "  ✓ Removed terminator config" || true
+	@[ -f $(HOME)/.byobu/.tmux.conf ] && rm $(HOME)/.byobu/.tmux.conf && echo "  ✓ Removed byobu tmux config" || true
+	@[ -f $(HOME)/.byobu/color.tmux ] && rm $(HOME)/.byobu/color.tmux && echo "  ✓ Removed byobu color config" || true
+	@echo "Uninstall complete! Backups are preserved."
 

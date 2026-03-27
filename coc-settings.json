@@ -1,3 +1,4 @@
+{
   "languageserver": {
     "bash": {
       "command": "bash-language-server",
@@ -6,3 +7,4 @@
       "ignoredRootPaths": ["~"]
     }
   }
+}
