@@ -117,6 +117,7 @@ i3:
 	@echo "Setting up i3 configuration..."
 	mkdir -p $(HOME)/.config/i3
 	cp i3 $(HOME)/.config/i3/config
+	cp wallpaper.png $(HOME)/.config/wallpaper.png
 
 # Conky configuration
 conky:
@@ -231,7 +232,7 @@ betterlockscreen:
 		libfontconfig1-dev libxcb-composite0-dev libev-dev libx11-xcb-dev \
 		libxcb-xkb-dev libxcb-xinerama0-dev libxcb-randr0-dev libxcb-image0-dev \
 		libxcb-util0-dev libxcb-xrm-dev libxkbcommon-dev libxkbcommon-x11-dev \
-		libjpeg-dev libgif-dev
+		libjpeg-dev libgif-dev imagemagick
 	@echo "Building i3lock-color..."
 	rm -rf /tmp/i3lock-color
 	git clone https://github.com/Raymo111/i3lock-color.git /tmp/i3lock-color
